@@ -42,7 +42,7 @@ const SearchByName = ({data}) => {
             
     }
     const taghandler = (e) =>{
-        const tag = e.target.value.toLowerCase() ;
+        const tag = e.target.value.trim().toLowerCase() ;
         setInputtag(tag);
     }
     useEffect(() => {
