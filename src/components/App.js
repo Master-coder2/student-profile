@@ -4,14 +4,11 @@ import axios from 'axios';
 import '../css/App.css'
 import SearchByName from './SearchByName';
 import {fetchalldata} from '../actions/index'
-import FetchedData from '../reducers/FetchedData';
 
-const App = () =>{
-     const [data,setData] = useState();
+const App = ({fetchalldata , data}) =>{
+    //  const [data,setData] = useState();
     const  getdata = async () => {
-         const fetchedData = await axios.get('https://www.hatchways.io/api/assessment/students');
-         setData(fetchedData.data.students);
-
+       fetchalldata();
     }
     useEffect( ()=>{
         getdata();
@@ -20,15 +17,16 @@ const App = () =>{
     
     return (
         <div className="app">
-            <SearchByName data = {data} />
+        {console.log("-- In App----")}
+           { console.log(data)}
+           <SearchByName data = {data} />
         </div>
         )
 }
-// // const mapStateToProps = (state) =>{
-// //     return {data:state.data}
-// // }
+const mapStateToProps = (state) =>{
+   
+    return {data:state.data}
+}
 
 
-// export default connect(mapStateToProps,{fetchalldata})(App);
-
-export default App ;
+export default connect(mapStateToProps,{fetchalldata})(App);

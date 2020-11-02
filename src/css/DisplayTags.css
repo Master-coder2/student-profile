@@ -1,0 +1,16 @@
+.displaytags {
+  display: flex;
+  margin-left: 180px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  width: 200px;
+}
+
+.displaytags > .tag {
+  background-color: #8e8e88;
+  width: 45px;
+  padding-left: 10px;
+  border-radius: 10px;
+  margin-left: 2px;
+  margin-top: 3px;
+}

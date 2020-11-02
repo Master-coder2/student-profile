@@ -4,6 +4,8 @@ import '../css/StudentCard.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import ShowMarks from './ShowMarks';
+import AddTag from './AddTag';
+import DisplayTags from './DisplayTags'
 
 
 const StudentCard = ({studentdata}) =>{
@@ -21,7 +23,13 @@ const StudentCard = ({studentdata}) =>{
     }
     const RenderAllMarks = () =>{
         if(displayAllMarks){
-            return <ShowMarks grades={studentdata.grades} />
+            return (
+                <div>
+                    <ShowMarks grades={studentdata.grades} />
+                    <DisplayTags id={studentdata.id-1} />
+                    <AddTag id={studentdata.id-1}/>
+                </div>
+            )
         }
     }
     const renderbutton = () =>{

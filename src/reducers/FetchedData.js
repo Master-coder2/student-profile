@@ -1,10 +1,15 @@
-import  { FETCHALLDATA } from '../actions/type';
-export default (state={students:[]}  , action) =>{
+import  { ADDTAG, FETCHALLDATA } from '../actions/type';
+export default (state=[]  , action) =>{
     switch(action.type){
         case FETCHALLDATA :
-            console.log('hello in fetchalldata reducer')
-            console.log(action.playload);
-            return {...state , students:[...state.students,action.playload]};
+            return [...state,...action.payload] ;
+        case ADDTAG:
+            const newstate = [...state];
+            if(newstate[action.payload.id]["TagName"])
+                newstate[action.payload.id]["TagName"] = [...newstate[action.payload.id]["TagName"],action.payload.tagName] 
+            else
+            newstate[action.payload.id]["TagName"] = [action.payload.tagName]
+            return newstate ;
         default :
             return state ;
     }
